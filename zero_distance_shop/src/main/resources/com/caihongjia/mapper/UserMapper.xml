@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caihongjia.mapper.UserMapper">
+    <update id="updateUser">
+        update user
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="sex != null and sex != ''">
+                sex = #{sex},
+            </if>
+            <if test="age != null and age != ''">
+                age = #{age},
+            </if>
+            <if test="image != null and image != ''">
+                image = #{image},
+            </if>
+        </set>
+        where id =#{id}
+    </update>
+    <select id="getByUserAndPassword" resultType="com.caihongjia.pojo.entity.UserEntity">
+        select * from user
+        <where>
+            <if test="username != null and username != ''">
+                username = #{username}
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone}
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email}
+            </if>
+                AND password = #{password}
+        </where>
+    </select>
+    <select id="getById" resultType="com.caihongjia.pojo.entity.UserEntity">
+        select * from user where id=#{id}
+    </select>
+</mapper>

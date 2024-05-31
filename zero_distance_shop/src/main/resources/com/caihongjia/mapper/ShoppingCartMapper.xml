@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caihongjia.mapper.ShoppingCartMapper">
+    <update id="updateShoppingCart">
+        update shopping_cart set quantity = #{quantity},update_time=#{updateTime} where id=#{id}
+    </update>
+    <delete id="deleteShoppingCart">
+        delete from shopping_cart where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <select id="getByUserId" resultType="com.caihongjia.pojo.vo.ShoppingCartVO">
+        select * from shopping_cart where user_id = #{userId}
+    </select>
+</mapper>

@@ -1,0 +1,37 @@
+spring:
+  application:
+    name:zero_distance_shop
+  # 配置数据库
+  datasource:
+    # 驱动类名称
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库连接的url,shop_db为数据库名
+    url: jdbc:mysql://localhost:3306/shop_db
+    # 连接数据库的用户名
+    username: root
+    # 连接数据库的密码
+    password: 123456
+
+  servlet:
+    multipart:
+      # 配置单个文件最大上传大小
+      max-file-size: 10MB
+      # 配置单个请求最大上传大小(一次请求可以上传文件)
+      max-request-size: 100MB
+
+
+# 配置mybatis
+mybatis:
+  configuration:
+    # 指定mybatis输出日志的位置,输出控制台;
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰命名:如果字段名与属性名符合驼峰命名规则，mybatis会自动通过驼峰命名规则映射
+    map-underscore-to-camel-case: true
+
+# 配置服务端地址和端口
+server:
+  address: 127.0.0.1
+  port: 8081
+
+# 自定义配置
+ 
